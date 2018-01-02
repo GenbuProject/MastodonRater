@@ -40,6 +40,10 @@ Main .mstdnRater_panel_content {
 	Margin-Right: 1em;
 }
 
+#toolbar-copyright A {
+	Color: Var(--mdc-theme-secondary-light);
+}
+
 #authPanel_authForm {
 	Display: Flex;
 	Flex-Direction: Row;
