@@ -1,0 +1,61 @@
+Body {
+	Margin: 0;
+}
+
+A.material-icons {
+	Text-Decoration: None;
+}
+
+.mdc-list-item > .mdc-list-item__text {
+	Margin-Right: 32px;
+}
+
+.mdc-list-item > .mdc-list-item__text, .mdc-list-item > .mdc-list-item__text > .mdc-list-item__secondary-text {
+	Overflow: Hidden;
+	Text-Overflow: Ellipsis;
+}
+
+.mdc-dialog .mdc-dialog__body {
+	White-Space: Pre-Line;
+}
+
+
+
+Main {
+	Padding: 0 1em;
+}
+
+Main > .mstdnRater_panel.mstdnRater_panel-disabled {
+	Display: None;
+}
+
+Main .mstdnRater_panel_content {
+	Display: Block;
+
+	Margin-Bottom: 2em;
+	White-Space: Pre-Line;
+}
+
+#toolbar-copyright {
+	Margin-Right: 1em;
+}
+
+#authPanel_authForm {
+	Display: Flex;
+	Flex-Direction: Row;
+	Align-Items: Flex-End;
+}
+
+#authPanel_authForm_instance {
+	Flex: 1;
+	Margin-Right: 0.5em;
+}
+
+#controlPanel_tootArea > .mdc-select__surface {
+	Background: Transparent;
+}
+
+#controlPanel_apps A[ID^="controlPanel_apps_app"].mstdnRater_app-running {
+	Opacity: 0.5;
+	Pointer-Events: None;
+}

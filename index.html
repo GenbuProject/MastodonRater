@@ -1,0 +1,197 @@
+<!DocType HTML>
+
+<HTML>
+	<Head>
+		<Meta Charset = "UTF-8" />
+		<Meta Name = "Viewport" Content = "Width=Device-Width, Initial-Scale=1, User-Scalable=No" />
+		<Title>MastodonRater</Title>
+		
+		<Script Src = "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></Script>
+		<Link Rel = "StyleSheet" Href = "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" />
+		<Link Rel = "StyleSheet" Href = "https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+		<Script Src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></Script>
+		<Script Src = "mastodon.js"></Script>
+		<Script Src = "https://genbuproject.github.io/Programs/DOM Extender/DOM Extender v3.4.js"></Script>
+
+		<Script Src = "classes/AppInfo.js"></Script>
+		<Script Src = "classes/Notify.js"></Script>
+		<Script Src = "classes/Revelance.js"></Script>
+		<Script Src = "classes/Util.js"></Script>
+		
+		<Script Src = "main.js" Defer = "Defer"></Script>
+		<Link Rel = "StyleSheet" Href = "main.css" />
+
+		<Script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			
+			ga('create', 'UA-88656260-1', 'auto');
+			ga('require', 'linkid', 'linkid.js');
+			ga('send', 'pageview');
+		</Script>
+	</Head>
+
+	<Body Class = "mdc-typography mdc-typography--body2">
+		<Header ID = "toolbar" Class = "mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall mdc-elevation--z4" Data-mdc-auto-init = "MDCToolbar">
+			<Div Class = "mdc-toolbar__row">
+				<Section Class = "mdc-toolbar__section mdc-toolbar__section--align-start">
+					<Span Class = "mdc-toolbar__title">MastodonRater</Span>
+				</Section>
+
+				<Section Class = "mdc-toolbar__section mdc-toolbar__section--align-end mdc-toolbar__section--shrink-to-fit">
+					<Span ID = "toolbar-copyright" Class = "mdc-typography--caption">(C) 2017 Genbu Project</Span>
+				</Section>
+			</Div>
+		</Header>
+
+		<Main Class = "mdc-toolbar-fixed-adjust">
+			<Section ID = "authPanel" Class = "mstdnRater_panel">
+				<Content Class = "mstdnRater_panel_content">
+					当サービスをご利用頂く前に、アカウントの認証をお願い致します。
+				</Content>
+
+				<Div ID = "authPanel_authForm">
+					<Div ID = "authPanel_authForm_instance" Class = "mdc-select" Role = "Listbox" Data-MDC-Auto-Init = "MDCSelect">
+						<Div Class = "mdc-select__surface">
+							<Div Class = "mdc-select__label">インスタンスのURL</Div>
+							<Div Class = "mdc-select__selected-text"></Div>
+							<Div Class = "mdc-select__bottom-line"></Div>
+						</Div>
+
+						<Div Class = "mdc-select__menu mdc-simple-menu">
+							<UL ID = "authPanel_authForm_instance-items" Class = "mdc-simple-menu__items mdc-list">
+
+							</UL>
+						</Div>
+					</Div>
+
+					<Button ID = "authPanel_authForm_submit" Class = "mdc-button mdc-button--raised" Data-MDC-Auto-Init = "MDCRipple">認証</Button>
+				</Div>
+			</Section>
+
+			<Section ID = "controlPanel" Class = "mstdnRater_panel mstdnRater_panel-disabled">
+				<Content Class = "mstdnRater_panel_content">
+					MastodonRaterへようこそ。
+					以下よりご利用になるサービスをお選び下さい。
+
+					現在のインスタンス：<Span ID = "controlPanel_instance"></Span>
+					
+					<Button ID = "controlPanel_signOut" Class = "mdc-button mdc-button--raised" Data-MDC-Auto-Init = "MDCRipple">ログアウト</Button>
+				</Content>
+
+				<UL ID = "controlPanel_apps" Class = "mdc-list mdc-list--two-line mdc-elevation--z5">
+					<Li Class = "mdc-list-item">
+						<Div ID = "controlPanel_tootArea" Class = "mdc-select" Role = "Listbox" Data-MDC-Auto-Init = "MDCSelect">
+							<Div Class = "mdc-select__surface">
+								<Div Class = "mdc-select__label">公開範囲</Div>
+								<Div Class = "mdc-select__selected-text"></Div>
+								<Div Class = "mdc-select__bottom-line"></Div>
+							</Div>
+
+							<Div Class = "mdc-select__menu mdc-simple-menu">
+								<UL Class = "mdc-simple-menu__items mdc-list">
+									<Li ID = "controlPanel_tootArea-public" Class = "mdc-list-item" Role = "ListItem">公開</Li>
+									<Li ID = "controlPanel_tootArea-unlisted" Class = "mdc-list-item" Role = "ListItem">未収載</Li>
+									<Li ID = "controlPanel_tootArea-private" Class = "mdc-list-item" Role = "ListItem">非公開</Li>
+									<Li ID = "controlPanel_tootArea-direct" Class = "mdc-list-item" Role = "ListItem">ダイレクト</Li>
+								</UL>
+							</Div>
+						</Div>
+					</Li>
+
+					<Li Class = "mdc-list-item">
+						<I Class = "mdc-list-item__start-detail material-icons" Aria-Hidden = "true">chat</I>
+
+						<Span Class = "mdc-list-item__text">
+							Toot Rater
+							<Span Class = "mdc-list-item__secondary-text">サーバー全体とのトゥート数比</Span>
+						</Span>
+
+						<A ID = "controlPanel_apps_app-tootRater" Class = "mdc-list-item__end-detail material-icons" Href = "#">launch</A>
+					</Li>
+
+					<Li Class = "mdc-list-item">
+						<I Class = "mdc-list-item__start-detail material-icons" Aria-Hidden = "true">subject</I>
+
+						<Span Class = "mdc-list-item__text">
+							TPD(Toots Per Day)
+							<Span Class = "mdc-list-item__secondary-text">1日当たりの平均トゥート数</Span>
+						</Span>
+
+						<A ID = "controlPanel_apps_app-tpd" Class = "mdc-list-item__end-detail material-icons" Href = "#">launch</A>
+					</Li>
+
+					<Li Class = "mdc-list-item">
+						<I Class = "mdc-list-item__start-detail material-icons" Aria-Hidden = "true">people</I>
+
+						<Span Class = "mdc-list-item__text">
+							Relevance Analyzer
+							<Span Class = "mdc-list-item__secondary-text">今日の投稿における関連度</Span>
+						</Span>
+						
+						<A ID = "controlPanel_apps_app-relevanceAnalyzer" Class = "mdc-list-item__end-detail material-icons" Href = "#">launch</A>
+
+						
+
+						<Aside ID = "controlPanel_dialogs-relevanceAnalyzer-dateArea" Class = "mdc-dialog" Role = "AlertDialog">
+							<Div Class = "mdc-dialog__surface">
+								<Header Class = "mdc-dialog__header">
+									<H2 Class = "mdc-dialog__header__title">
+										Relevance Analyzer
+									</H2>
+								</Header>
+
+								<Section Class = "mdc-dialog__body">
+									取得範囲を選択して下さい。
+									※注意：取得範囲が長いほど処理に時間が掛かります！！！
+
+									<Div Class = "mdc-select">
+										<Select ID = "controlPanel_dialogs-relevanceAnalyzer-dateArea_date" Class = "mdc-select__surface mdc-select__selected-text">
+											<Option Value = "0" Selected = "Selected">本日分のみ</Option>
+											<Option Value = "1">1日前まで</Option>
+											<Option Value = "2">2日前まで</Option>
+											<Option Value = "3">3日前まで</Option>
+											<Option Value = "4">4日前まで</Option>
+											<Option Value = "5">5日前まで</Option>
+											<Option Value = "6">6日前まで</Option>
+											<Option Value = "7">7日前まで</Option>
+										</Select>
+
+										<Div Class = "mdc-select__label mdc-select__label--float-above">取得範囲</Div>
+										<Div Class = "mdc-select__bottom-line"></Div>
+									</Div>
+								</Section>
+
+								<Footer Class = "mdc-dialog__footer">
+									<Button Class = "mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">キャンセル</Button>
+									<Button Class = "mdc-button mdc-dialog__action mdc-dialog__footer__button mdc-dialog__footer__button--accept">実行</Button>
+								</Footer>
+							</Div>
+
+							<Div Class = "mdc-dialog__backdrop"></Div>
+						</Aside>
+					</Li>
+				</UL>
+			</Section>
+
+			<Section ID = "contactPanel" Class = "mstdnRater_panel">
+				<Content Class = "mstdnRater_panel_content">
+					ご利用のインスタンスが対応されていない場合は、
+					管理者の方より<A Href = "mailto:genbuproject@gmail.com">こちら</A>へとご連絡下さい。
+
+					確認及び話し合いの後、早急に対応致します。
+				</Content>
+			</Section>
+		</Main>
+
+		<Div ID = "notify" Class = "mdc-snackbar" Aria-Hidden = "true">
+			<Div Class = "mdc-snackbar__text">投稿が反映されました</Div>
+			<Div Class = "mdc-snackbar__action-wrapper">
+				<Button Class = "mdc-snackbar__action-button">閉じる</Button>
+			</Div>
+		</Div>
+	</Body>
+</HTML>
