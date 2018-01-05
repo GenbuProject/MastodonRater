@@ -136,7 +136,7 @@
 						
 						<A ID = "controlPanel_apps_app-relevanceAnalyzer" Class = "mdc-list-item__end-detail material-icons" Href = "#">launch</A>
 
-						
+						<!--[ToDo] メンション → ユーザーのハンドルネーム-->
 
 						<Aside ID = "controlPanel_dialogs-relevanceAnalyzer-dateArea" Class = "mdc-dialog" Role = "AlertDialog">
 							<Div Class = "mdc-dialog__surface">
@@ -170,6 +170,32 @@
 								<Footer Class = "mdc-dialog__footer">
 									<Button Class = "mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">キャンセル</Button>
 									<Button Class = "mdc-button mdc-dialog__action mdc-dialog__footer__button mdc-dialog__footer__button--accept">実行</Button>
+								</Footer>
+							</Div>
+
+							<Div Class = "mdc-dialog__backdrop"></Div>
+						</Aside>
+
+						<Aside ID = "controlPanel_dialogs-relevanceAnalyzer-tootConfirmer" Class = "mdc-dialog" Role = "AlertDialog">
+							<Div Class = "mdc-dialog__surface">
+								<Header Class = "mdc-dialog__header">
+									<H2 Class = "mdc-dialog__header__title">
+										トゥート内容の確認 | Relevance Analyzer
+									</H2>
+								</Header>
+
+								<Section Class = "mdc-dialog__body">
+									以下の内容でトゥートします。
+									宜しければ、確認ボタンを押してください。
+
+									<Div ID = "controlPanel_dialogs-relevanceAnalyzer-tootConfirmer_content">
+										
+									</Div>
+								</Section>
+
+								<Footer Class = "mdc-dialog__footer">
+									<Button Class = "mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">キャンセル</Button>
+									<Button Class = "mdc-button mdc-dialog__action mdc-dialog__footer__button mdc-dialog__footer__button--accept">確認</Button>
 								</Footer>
 							</Div>
 

@@ -63,3 +63,10 @@ Main .mstdnRater_panel_content {
 	Opacity: 0.5;
 	Pointer-Events: None;
 }
+
+#controlPanel_dialogs-relevanceAnalyzer-tootConfirmer_content {
+	Padding: 1em;
+	White-Space: Pre-Line;
+
+	Border: Thin Solid RGBA(0, 0, 0, 0.25);
+}

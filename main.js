@@ -50,6 +50,11 @@ const IDS = {
 					DATEAREA: {
 						ROOT: "controlPanel_dialogs-relevanceAnalyzer-dateArea",
 						DATE: "controlPanel_dialogs-relevanceAnalyzer-dateArea_date"
+					},
+
+					CONFIRMER: {
+						ROOT: "controlPanel_dialogs-relevanceAnalyzer-tootConfirmer",
+						CONTENT: "controlPanel_dialogs-relevanceAnalyzer-tootConfirmer_content"
 					}
 				}
 			}
@@ -222,6 +227,8 @@ window.addEventListener("DOMContentLoaded", () => {
 		apps.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.ROOT}`).addEventListener("click", (event) => {
 			event.preventDefault();
 
+			let tootContent = "";
+
 			let dateAreaDialog = new mdc.dialog.MDCDialog(event.target.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.DATEAREA.ROOT}`));
 				dateAreaDialog.listen("MDCDialog:accept", () => {
 					notify.begin();
@@ -250,32 +257,33 @@ window.addEventListener("DOMContentLoaded", () => {
 												return 0;
 											});
 
-											app.post("statuses", {
-												status: [
-													"#RevelanceAnalyzer",
-													"#統計さん",
-													"",
-													`@${myself.username} さんと`,
-													`仲良しのユーザーは`,
-													"",
-													(rank => {
-														let ranking = [];
-														for (let i = 0; i < rank; i++) ranking.push(`${i + 1}位：@${scores[i][0]}(Score ${scores[i][1]})`);
+											tootContent = event.target.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.CONFIRMER.CONTENT}`).textContent = [
+												"#RevelanceAnalyzer",
+												"#統計さん",
+												"",
+												`@${myself.username} さんと`,
+												`仲良しのユーザーは`,
+												"",
+												(rank => {
+													let ranking = [];
 
-														return ranking.join("\r\n");
-													})(3),
-													"",
-													"の方々です！！",
-													"",
-													"(Tooted from #MastodonRater)",
-													SITEURL
-												].join("\r\n"),
+													for (let i = 0; i < rank; i++) {
+														ranking.push([
+															`《${i + 1}位》`,
+															`${scores[i][0]}(Score ${scores[i][1]})`,
+															""
+														].join("\r\n"));
+													}
 
-												visibility: appInfo.tootArea
-											}).then(() => {
-												notify.finish();
-												event.target.classList.remove(CLASSES.APPS.RUNNING);
-											});
+													return ranking.join("\r\n");
+												})(3),
+												"の方々です！！",
+												"",
+												"(Tooted from #MastodonRater)",
+												SITEURL
+											].join("\r\n");
+
+											tootConfirmer.show();
 
 											console.log(scores);
 										});
@@ -285,6 +293,17 @@ window.addEventListener("DOMContentLoaded", () => {
 				});
 
 				dateAreaDialog.show();
+
+			let tootConfirmer = new mdc.dialog.MDCDialog(event.target.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.CONFIRMER.ROOT}`));
+				tootConfirmer.listen("MDCDialog:accept", () => {
+					app.post("statuses", {
+						status: tootContent,
+						visibility: appInfo.tootArea
+					}).then(() => {
+						notify.finish();
+						event.target.classList.remove(CLASSES.APPS.RUNNING);
+					});
+				});
 		});
 
 
