@@ -15,9 +15,19 @@ class Notify {
 		});*/
 	}
 
+	get defaultProp () {
+		return {
+			timeout: 1500,
+
+			actionText: "閉じる",
+			actionHandler () {}
+		}
+	}
+
 	begin () {
 		this.self.show({
-			message: "処理を実行しています..."
+			message: "処理を実行しています...",
+			...this.defaultProp
 		});
 
 		/*let notify = new Notification("MastodonRater", {
@@ -29,11 +39,25 @@ class Notify {
 
 	finish () {
 		this.self.show({
-			message: "投稿が反映されました"
+			message: "投稿が反映されました",
+			...this.defaultProp
 		});
 
 		/*let notify = new Notification("MastodonRater", {
 			body: "投稿が反映されました"
+		});	notify.addEventListener("click", function () {
+			this.close();
+		});*/
+	}
+
+	cancel () {
+		this.self.show({
+			message: "この処理は実行されませんでした",
+			...this.defaultProp
+		});
+
+		/*let notify = new Notification("MastodonRater", {
+			body: "この処理は実行されませんでした"
 		});	notify.addEventListener("click", function () {
 			this.close();
 		});*/

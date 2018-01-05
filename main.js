@@ -224,17 +224,23 @@ window.addEventListener("DOMContentLoaded", () => {
 			});
 		});
 
-		apps.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.ROOT}`).addEventListener("click", (event) => {
-			event.preventDefault();
-
+		(() => {
 			let tootContent = "";
 
-			let dateAreaDialog = new mdc.dialog.MDCDialog(event.target.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.DATEAREA.ROOT}`));
+			let rootBtn = apps.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.ROOT}`);
+				rootBtn.addEventListener("click", (event) => {
+					event.preventDefault();
+
+					dateAreaDialog.show();
+				});
+
+			let dateAreaDialog = new mdc.dialog.MDCDialog(rootBtn.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.DATEAREA.ROOT}`));
 				dateAreaDialog.listen("MDCDialog:accept", () => {
 					notify.begin();
-					event.target.classList.add(CLASSES.APPS.RUNNING);
+					rootBtn.classList.add(CLASSES.APPS.RUNNING);
 
-					let date = Util.getTheday(new Date(Date.now() - 1000 * 60 * 60 * 24 * event.target.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.DATEAREA.DATE}`).value));
+					let dateArea = rootBtn.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.DATEAREA.DATE}`).value;
+					let date = Util.getTheday(new Date(Date.now() - 1000 * 60 * 60 * 24 * dateArea));
 
 					let myself = {};
 						app.get("accounts/verify_credentials").then(res => myself = res).then(() => {
@@ -257,9 +263,9 @@ window.addEventListener("DOMContentLoaded", () => {
 												return 0;
 											});
 
-											tootContent = event.target.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.CONFIRMER.CONTENT}`).textContent = [
+											tootContent = rootBtn.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.CONFIRMER.CONTENT}`).textContent = [
 												"#RevelanceAnalyzer",
-												"#統計さん",
+												`${dateArea == 0 ? "本日分" : dateArea + "日前まで"}の #統計さん`,
 												"",
 												`@${myself.username} さんと`,
 												`仲良しのユーザーは`,
@@ -292,19 +298,22 @@ window.addEventListener("DOMContentLoaded", () => {
 						});
 				});
 
-				dateAreaDialog.show();
-
-			let tootConfirmer = new mdc.dialog.MDCDialog(event.target.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.CONFIRMER.ROOT}`));
+			let tootConfirmer = new mdc.dialog.MDCDialog(rootBtn.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.CONFIRMER.ROOT}`));
 				tootConfirmer.listen("MDCDialog:accept", () => {
 					app.post("statuses", {
 						status: tootContent,
 						visibility: appInfo.tootArea
 					}).then(() => {
 						notify.finish();
-						event.target.classList.remove(CLASSES.APPS.RUNNING);
+						rootBtn.classList.remove(CLASSES.APPS.RUNNING);
 					});
 				});
-		});
+
+				tootConfirmer.listen("MDCDialog:cancel", () => {
+					notify.cancel();
+					rootBtn.classList.remove(CLASSES.APPS.RUNNING);
+				});
+		})();
 
 
 	
