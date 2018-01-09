@@ -84,7 +84,7 @@
 					<Button ID = "controlPanel_signOut" Class = "mdc-button mdc-button--raised" Data-MDC-Auto-Init = "MDCRipple">ログアウト</Button>
 				</Content>
 
-				<UL ID = "controlPanel_apps" Class = "mdc-list mdc-list--two-line mdc-elevation--z5">
+				<UL ID = "controlPanel_apps" Class = "mdc-list mdc-list--two-line mdc-list--non-interactive mdc-elevation--z5">
 					<Li Class = "mdc-list-item">
 						<Div ID = "controlPanel_tootArea" Class = "mdc-select" Role = "Listbox" Data-MDC-Auto-Init = "MDCSelect">
 							<Div Class = "mdc-select__surface">
@@ -95,48 +95,46 @@
 
 							<Div Class = "mdc-select__menu mdc-simple-menu">
 								<UL Class = "mdc-simple-menu__items mdc-list">
-									<Li ID = "controlPanel_tootArea-public" Class = "mdc-list-item" Role = "ListItem">公開</Li>
-									<Li ID = "controlPanel_tootArea-unlisted" Class = "mdc-list-item" Role = "ListItem">未収載</Li>
-									<Li ID = "controlPanel_tootArea-private" Class = "mdc-list-item" Role = "ListItem">非公開</Li>
-									<Li ID = "controlPanel_tootArea-direct" Class = "mdc-list-item" Role = "ListItem">ダイレクト</Li>
+									<Li ID = "controlPanel_tootArea-public" Class = "mdc-list-item" Role = "Option">公開</Li>
+									<Li ID = "controlPanel_tootArea-unlisted" Class = "mdc-list-item" Role = "Option">未収載</Li>
+									<Li ID = "controlPanel_tootArea-private" Class = "mdc-list-item" Role = "Option">非公開</Li>
+									<Li ID = "controlPanel_tootArea-direct" Class = "mdc-list-item" Role = "Option">ダイレクト</Li>
 								</UL>
 							</Div>
 						</Div>
 					</Li>
 
 					<Li Class = "mdc-list-item">
-						<I Class = "mdc-list-item__start-detail material-icons" Aria-Hidden = "true">chat</I>
+						<I Class = "mdc-list-item__graphic material-icons" Role = "Presentation" Aria-Hidden = "true">chat</I>
 
 						<Span Class = "mdc-list-item__text">
 							Toot Rater
 							<Span Class = "mdc-list-item__secondary-text">サーバー全体とのトゥート数比</Span>
 						</Span>
 
-						<A ID = "controlPanel_apps_app-tootRater" Class = "mdc-list-item__end-detail material-icons" Href = "#">launch</A>
+						<A ID = "controlPanel_apps_app-tootRater" Class = "mdc-list-item__meta material-icons" Href = "#">launch</A>
 					</Li>
 
 					<Li Class = "mdc-list-item">
-						<I Class = "mdc-list-item__start-detail material-icons" Aria-Hidden = "true">subject</I>
+						<I Class = "mdc-list-item__graphic material-icons" Role = "Presentation" Aria-Hidden = "true">subject</I>
 
 						<Span Class = "mdc-list-item__text">
 							TPD(Toots Per Day)
 							<Span Class = "mdc-list-item__secondary-text">1日当たりの平均トゥート数</Span>
 						</Span>
 
-						<A ID = "controlPanel_apps_app-tpd" Class = "mdc-list-item__end-detail material-icons" Href = "#">launch</A>
+						<A ID = "controlPanel_apps_app-tpd" Class = "mdc-list-item__meta material-icons" Href = "#">launch</A>
 					</Li>
 
 					<Li Class = "mdc-list-item">
-						<I Class = "mdc-list-item__start-detail material-icons" Aria-Hidden = "true">people</I>
+						<I Class = "mdc-list-item__graphic material-icons" Role = "Presentation" Aria-Hidden = "true">people</I>
 
 						<Span Class = "mdc-list-item__text">
 							Relevance Analyzer
 							<Span Class = "mdc-list-item__secondary-text">ユーザーとの親密度</Span>
 						</Span>
 						
-						<A ID = "controlPanel_apps_app-relevanceAnalyzer" Class = "mdc-list-item__end-detail material-icons" Href = "#">launch</A>
-
-						<!--[ToDo] メンション → ユーザーのハンドルネーム-->
+						<A ID = "controlPanel_apps_app-relevanceAnalyzer" Class = "mdc-list-item__meta material-icons" Href = "#">launch</A>
 
 						<Aside ID = "controlPanel_dialogs-relevanceAnalyzer-dateArea" Class = "mdc-dialog" Role = "AlertDialog">
 							<Div Class = "mdc-dialog__surface">

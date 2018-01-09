@@ -41,7 +41,7 @@ Main .mstdnRater_panel_content {
 }
 
 #toolbar-copyright A {
-	Color: Var(--mdc-theme-secondary-light);
+	Color: Var(--mdc-theme-text-secondary-on-primary);
 }
 
 #authPanel_authForm {
