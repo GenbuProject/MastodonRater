@@ -15,51 +15,31 @@ class Notify {
 		});*/
 	}
 
-	get defaultProp () {
-		return {
+	generate (text = "") {
+		this.self.show({
+			message: text,
 			timeout: 1500,
 
 			actionText: "閉じる",
 			actionHandler () {}
-		}
+		});
+
+		/*let notify = new Notification("MastodonRater", {
+			body: text
+		});	notify.addEventListener("click", function () {
+			this.close();
+		});*/
 	}
 
 	begin () {
-		this.self.show({
-			message: "処理を実行しています...",
-			...this.defaultProp
-		});
-
-		/*let notify = new Notification("MastodonRater", {
-			body: "処理を実行しています..."
-		});	notify.addEventListener("click", function () {
-			this.close();
-		});*/
+		this.generate("処理を実行しています...")
 	}
 
 	finish () {
-		this.self.show({
-			message: "投稿が反映されました",
-			...this.defaultProp
-		});
-
-		/*let notify = new Notification("MastodonRater", {
-			body: "投稿が反映されました"
-		});	notify.addEventListener("click", function () {
-			this.close();
-		});*/
+		this.generate("投稿が反映されました")
 	}
 
 	cancel () {
-		this.self.show({
-			message: "この処理は実行されませんでした",
-			...this.defaultProp
-		});
-
-		/*let notify = new Notification("MastodonRater", {
-			body: "この処理は実行されませんでした"
-		});	notify.addEventListener("click", function () {
-			this.close();
-		});*/
+		this.generate("この処理は実行されませんでした")
 	}
 }
