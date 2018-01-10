@@ -32,14 +32,14 @@ class Notify {
 	}
 
 	begin () {
-		this.generate("処理を実行しています...")
+		this.generate("処理を実行しています...");
 	}
 
 	finish () {
-		this.generate("投稿が反映されました")
+		this.generate("投稿が反映されました");
 	}
 
 	cancel () {
-		this.generate("この処理は実行されませんでした")
+		this.generate("この処理は実行されませんでした");
 	}
 }
