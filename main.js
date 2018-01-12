@@ -43,7 +43,7 @@ const IDS = {
 			TOOTRATER: "controlPanel_apps_app-tootRater",
 			TPD: "controlPanel_apps_app-tpd",
 
-			REVELANCE: {
+			RELEVANCE: {
 				ROOT: "controlPanel_apps_app-relevanceAnalyzer",
 
 				DIALOGS: {
@@ -227,32 +227,32 @@ window.addEventListener("DOMContentLoaded", () => {
 		(() => {
 			let tootContent = "";
 
-			let rootBtn = apps.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.ROOT}`);
+			let rootBtn = apps.querySelector(`#${IDS.CONTROL.APPS.RELEVANCE.ROOT}`);
 				rootBtn.addEventListener("click", (event) => {
 					event.preventDefault();
 
 					dateAreaDialog.show();
 				});
 
-			let dateAreaDialog = new mdc.dialog.MDCDialog(rootBtn.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.DATEAREA.ROOT}`));
+			let dateAreaDialog = new mdc.dialog.MDCDialog(rootBtn.parentNode.querySelector(`#${IDS.CONTROL.APPS.RELEVANCE.DIALOGS.DATEAREA.ROOT}`));
 				dateAreaDialog.listen("MDCDialog:accept", () => {
 					notify.begin();
 					rootBtn.classList.add(CLASSES.APPS.RUNNING);
 
-					let dateArea = rootBtn.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.DATEAREA.DATE}`).value;
+					let dateArea = rootBtn.parentNode.querySelector(`#${IDS.CONTROL.APPS.RELEVANCE.DIALOGS.DATEAREA.DATE}`).value;
 					let date = Util.getTheday(new Date(Date.now() - 1000 * 60 * 60 * 24 * dateArea));
 
 					let myself = {};
 						app.get("accounts/verify_credentials").then(res => myself = res).then(() => {
 							let friends = [];
-								Revelance.getFriends(myself.id).then(res => friends = res).then(() => {
-									Revelance.getBoostsAndMentions(myself.id, friends, date).then(res => friends = res).then(() => {
-										Revelance.getStars(friends, date).then(res => friends = res).then(() => {
+								Relevance.getFriends(myself.id).then(res => friends = res).then(() => {
+									Relevance.getBoostsAndMentions(myself.id, friends, date).then(res => friends = res).then(() => {
+										Relevance.getStars(friends, date).then(res => friends = res).then(() => {
 											let scores = [];
 											
 											for (let friend of friends) {
 												if (friend) {
-													scores.push([friend.acct, friend.star * Revelance.STAR + friend.boost * Revelance.BOOST + friend.mention * Revelance.MENTION]);
+													scores.push([friend.acct, friend.star * Relevance.STAR + friend.boost * Relevance.BOOST + friend.mention * Relevance.MENTION]);
 												}
 											}
 
@@ -263,8 +263,8 @@ window.addEventListener("DOMContentLoaded", () => {
 												return 0;
 											});
 
-											tootContent = rootBtn.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.CONFIRMER.CONTENT}`).textContent = [
-												"#RevelanceAnalyzer",
+											tootContent = rootBtn.parentNode.querySelector(`#${IDS.CONTROL.APPS.RELEVANCE.DIALOGS.CONFIRMER.CONTENT}`).textContent = [
+												"#RelevanceAnalyzer",
 												`${dateArea == 0 ? "本日分" : dateArea + "日前まで"}の #統計さん`,
 												"",
 												`@${myself.username} さんと`,
@@ -298,7 +298,7 @@ window.addEventListener("DOMContentLoaded", () => {
 						});
 				});
 
-			let tootConfirmer = new mdc.dialog.MDCDialog(rootBtn.parentNode.querySelector(`#${IDS.CONTROL.APPS.REVELANCE.DIALOGS.CONFIRMER.ROOT}`));
+			let tootConfirmer = new mdc.dialog.MDCDialog(rootBtn.parentNode.querySelector(`#${IDS.CONTROL.APPS.RELEVANCE.DIALOGS.CONFIRMER.ROOT}`));
 				tootConfirmer.listen("MDCDialog:accept", () => {
 					app.post("statuses", {
 						status: tootContent,

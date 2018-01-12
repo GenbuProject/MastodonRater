@@ -1,4 +1,4 @@
-class Revelance {
+class Relevance {
 	static get STAR () { return 1 }
 	static get BOOST () { return 2 }
 	static get MENTION () { return 4 }
@@ -32,7 +32,7 @@ class Revelance {
 	static getFriends (id = 0) {
 		return new Promise((resolve, reject) => {
 			let result = [];
-				Revelance.getFollowings(id).then(res => {
+				Relevance.getFollowings(id).then(res => {
 					for (let user of res) {
 						result[user.id] = user;
 
