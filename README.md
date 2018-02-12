@@ -6,6 +6,8 @@
 > 各インスタンスへの対応は手動となっております。
 > <Br />
 > 導入をお考えの方は、お手数お掛け致しますが[こちら](mailto:genbuproject@gmail.com)までご連絡ください。
+> 
+> Herokuへのデプロイ方法は[こちら](https://github.com/GenbuProject/MastodonRater/blob/master/DeployToHeroku.md)を参照してください。
 
 ## 2. 機能一覧
 > ### Toot Rater
