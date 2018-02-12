@@ -1,5 +1,7 @@
 # MastodonRater
 
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## 1. 概要
 > 当サービスは、MastodonAPIを利用して様々な指標を算出するツールです。
 > 

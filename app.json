@@ -1,0 +1,14 @@
+{
+	"name": "MastodonRater",
+	"description": "マストドンライフを統計で豊かにするツール",
+
+	"keywords": [
+		"MastodonRater",
+		"Mastodon",
+		"マストドン",
+		"Yづドン"
+	],
+
+	"repository": "https://github.com/GenbuProject/MastodonRater",
+	"logo": "https://genbuproject.github.io/favicon.png"
+}
