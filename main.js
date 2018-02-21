@@ -49,7 +49,8 @@ const IDS = {
 				DIALOGS: {
 					DATEAREA: {
 						ROOT: "controlPanel_dialogs-relevanceAnalyzer-dateArea",
-						DATE: "controlPanel_dialogs-relevanceAnalyzer-dateArea_date"
+						DATE: "controlPanel_dialogs-relevanceAnalyzer-dateArea_date",
+						DOESSKIP: "controlPanel_dialogs-relevanceAnalyzer-dateArea_doesSkipConfirmer"
 					},
 
 					CONFIRMER: {
@@ -284,7 +285,17 @@ window.addEventListener("DOMContentLoaded", () => {
 												SITEURL
 											].join("\r\n");
 
-											tootConfirmer.show();
+											if (!rootBtn.parentNode.querySelector(`#${IDS.CONTROL.APPS.RELEVANCE.DIALOGS.DATEAREA.DOESSKIP}`).checked) {
+												tootConfirmer.show();
+											} else {
+												app.post("statuses", {
+													status: tootContent,
+													visibility: appInfo.tootArea
+												}).then(() => {
+													notify.finish();
+													rootBtn.classList.remove(CLASSES.APPS.RUNNING);
+												});
+											}
 
 											console.log(scores);
 										});

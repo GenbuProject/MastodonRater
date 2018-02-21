@@ -148,20 +148,36 @@
 									取得範囲を選択して下さい。
 									※注意：取得範囲が長いほど処理に時間が掛かります！！！
 
-									<Div Class = "mdc-select">
-										<Select ID = "controlPanel_dialogs-relevanceAnalyzer-dateArea_date" Class = "mdc-select__surface mdc-select__selected-text">
-											<Option Value = "0" Selected = "Selected">本日分のみ</Option>
-											<Option Value = "1">1日前まで</Option>
-											<Option Value = "2">2日前まで</Option>
-											<Option Value = "3">3日前まで</Option>
-											<Option Value = "4">4日前まで</Option>
-											<Option Value = "5">5日前まで</Option>
-											<Option Value = "6">6日前まで</Option>
-											<Option Value = "7">7日前まで</Option>
-										</Select>
+									<Div Class = "mdc-form-field">
+										<Div Class = "mdc-select">
+											<Select ID = "controlPanel_dialogs-relevanceAnalyzer-dateArea_date" Class = "mdc-select__surface mdc-select__selected-text">
+												<Option Value = "0" Selected = "Selected">本日分のみ</Option>
+												<Option Value = "1">1日前まで</Option>
+												<Option Value = "2">2日前まで</Option>
+												<Option Value = "3">3日前まで</Option>
+												<Option Value = "4">4日前まで</Option>
+												<Option Value = "5">5日前まで</Option>
+												<Option Value = "6">6日前まで</Option>
+												<Option Value = "7">7日前まで</Option>
+											</Select>
 
-										<Div Class = "mdc-select__label mdc-select__label--float-above">取得範囲</Div>
-										<Div Class = "mdc-select__bottom-line"></Div>
+											<Div Class = "mdc-select__label mdc-select__label--float-above">取得範囲</Div>
+											<Div Class = "mdc-select__bottom-line"></Div>
+										</Div>
+										
+										<Div Class = "mdc-checkbox" Data-MDC-Auto-Init = "MDCCheckbox">
+											<Input ID = "controlPanel_dialogs-relevanceAnalyzer-dateArea_doesSkipConfirmer" Type = "Checkbox" Class = "mdc-checkbox__native-control" />
+
+											<Div Class = "mdc-checkbox__background">
+												<Svg Class = "mdc-checkbox__checkmark" ViewBox = "0 0 24 24">
+													<Path Class = "mdc-checkbox__checkmark-path" Fill = "none" Stroke = "White" D = "M1.73,12.91 8.1,19.28 22.79,4.59"></Path>
+												</Svg>
+
+												<Div Class = "mdc-checkbox__mixedmark"></Div>
+											</Div>
+										</Div>
+
+										<Label For = "controlPanel_dialogs-relevanceAnalyzer-dateArea_doesSkipConfirmer">投稿確認画面をスキップ</Label>
 									</Div>
 								</Section>
 
