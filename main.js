@@ -85,6 +85,11 @@ const SERVERS = {
 	"https://mstdn.kemono-friends.info": {
 		CLIENTID: "0a23fb3bd0f024f1acc0fe28cda94f6a457b4189548e1bcabee31d3fe597a847",
 		SECRETID: "04a94354faf8885c8c5a70327e4d5ebec18856a5ecfa0961055ee70e41b24563"
+	},
+
+	"https://friends.nico": {
+		CLIENTID: "b064bf6009fc0f013db14de8179b3b1486e9aafede438bc7ff93bbab1c8c586d",
+		SECRETID: "c2cdb9d5798f017ab0c8f19c22eb650c2f3eac3dc5bed90ed9fcbc9ecaf14fed"
 	}
 }
 
