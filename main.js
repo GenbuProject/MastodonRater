@@ -90,6 +90,11 @@ const SERVERS = {
 	"https://friends.nico": {
 		CLIENTID: "b064bf6009fc0f013db14de8179b3b1486e9aafede438bc7ff93bbab1c8c586d",
 		SECRETID: "c2cdb9d5798f017ab0c8f19c22eb650c2f3eac3dc5bed90ed9fcbc9ecaf14fed"
+	},
+
+	"https://mstdn.jp": {
+		CLIENTID: "4912bd71efd225e00fb464877c46680e2ccaba70d70e842f6e025113b193438e",
+		SECRETID: "74b2f7aab103a41e422c995df3323b5758360f1307730d157b68ed38ba9f7fb6"
 	}
 }
 
