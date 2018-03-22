@@ -95,6 +95,11 @@ const SERVERS = {
 	"https://mstdn.jp": {
 		CLIENTID: "4912bd71efd225e00fb464877c46680e2ccaba70d70e842f6e025113b193438e",
 		SECRETID: "74b2f7aab103a41e422c995df3323b5758360f1307730d157b68ed38ba9f7fb6"
+	},
+
+	"https://itabashi.0j0.jp": {
+		CLIENTID: "88d2eb70c6c9fef13e987cc320ea6038553113ae62fcd8cffa9d77fd0fd27a40",
+		SECRETID: "c001d5ec7a5ee2477db1605ec6129d2d94b64ba0964fcc75981febf393b89b43"
 	}
 }
 
