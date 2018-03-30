@@ -100,6 +100,11 @@ const SERVERS = {
 	"https://itabashi.0j0.jp": {
 		CLIENTID: "88d2eb70c6c9fef13e987cc320ea6038553113ae62fcd8cffa9d77fd0fd27a40",
 		SECRETID: "c001d5ec7a5ee2477db1605ec6129d2d94b64ba0964fcc75981febf393b89b43"
+	},
+
+	"https://pic.otos.red": {
+		CLIENTID: "9553ec2165a464d5ea72a09945c7f7b0c125da7002a373dd9c1b2df3e94fc913",
+		SECRETID: "eb5cd8d092bd65b3236b3d305e351ef576fb64408469067b0e6712028cde554b"
 	}
 }
 
