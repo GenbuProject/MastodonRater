@@ -21,16 +21,15 @@
 		
 		<Script Src = "main.js" Defer = "Defer"></Script>
 		<Link Rel = "StyleSheet" Href = "main.css" />
-
+		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<Script Src = "https://www.googletagmanager.com/gtag/js?id=UA-88656260-3" Async></Script>
 		<Script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-			
-			ga('create', 'UA-88656260-1', 'auto');
-			ga('require', 'linkid', 'linkid.js');
-			ga('send', 'pageview');
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  
+		  gtag('config', 'UA-88656260-3');
 		</Script>
 	</Head>
 
@@ -229,8 +228,13 @@
 				<Content Class = "mstdnRater_panel_content">
 					ご利用のインスタンスが対応されていない場合は、
 					管理者の方より<A Href = "mailto:genbuproject@gmail.com">こちら</A>へとご連絡下さい。
-
+					
 					確認及び話し合いの後、早急に対応致します。
+					
+					また、このアプリケーションは<A Href = "https://mstdn.y-zu.org/">Yづドン</A>に実装されていた<B>UtilBtns</B>から独立したものです。
+					独立までに2日と、かなり急いでやった感じなので今後作り直していきたいと思います。
+					
+					以上の程、よろしくお願い致します。
 				</Content>
 			</Section>
 		</Main>
