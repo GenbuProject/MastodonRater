@@ -78,8 +78,8 @@ const CLASSES = {
 
 const SERVERS = {
 	"https://mstdn.y-zu.org": {
-		CLIENTID: "bca80b2d45ed527ce2df258c221f9adfb6bf5deee793e7da8b6b024e0a3172cc",
-		SECRETID: "cb265cd91b565af0135544ba8e962f984da1f688ad6da44752de7988449600b0"
+		CLIENTID: "54911c66596b964f1907288d146ba1a1db495001dfe73abf65ec602333b3881d",
+		SECRETID: "f8e0bc5321bb3a95310761d77687b7bafd7b986dd7149b40b7cacfe3ec7f15bd"
 	},
 
 	"https://mstdn.kemono-friends.info": {
