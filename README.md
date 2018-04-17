@@ -23,7 +23,9 @@
 
 ## 3. Contact
 > 何かご要望などありましたら、こちらまでご気軽にご連絡下さい。
-> * [@ProgrammerGenboo](https://mstdn.y-zu.org/@ProgrammerGenboo)
+> * [@ProgrammerGenboo(神崎丼)](https://knzk.me/@ProgrammerGenboo)
+> * [@ProgrammerGenboo(Yづドン)](https://mstdn.y-zu.org/@ProgrammerGenboo)
+> * [どっかのGenboo。(Google+)](https://plus.google.com/106666684430101995501)
 > 
 > ご自分のインスタンスの反映は、お手数お掛け致しますがこちらまでご連絡下さい。
 > * [Genbu Project](mailto:genbuproject@gmail.com)
